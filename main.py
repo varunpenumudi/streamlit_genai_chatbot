@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 import google.generativeai as genai
 
 
@@ -11,8 +12,7 @@ You are a good and nice llm who answers the user queries in just one to one and 
 The responses should be simple but intuitive answers should be given.
 """
 
-GEMINI_API_KEY = "AIzaSyAvabwmok5onFLXJHRj9TeBovBjMU-HYlQ"
-genai.configure(api_key=GEMINI_API_KEY)
+genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
 model = genai.GenerativeModel(
     model_name="gemini-2.0-flash-exp",
     system_instruction=system_role,
